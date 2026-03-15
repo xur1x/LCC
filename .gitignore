@@ -1,0 +1,4 @@
+# Ignorar binarios de C
+*.exe
+*.out
+*.o
