@@ -208,3 +208,44 @@ int string_subcadena(char* str1, char* str2){
 // tado en res.
 // Nota: Si res no tiene espacio suficiente para almacenar el resultado, el comportamiento queda
 // indefinido.
+
+// void string_unir(char* arregloStrings[], int n, char* sep, char* res){
+        
+// }
+
+void string_unir(char* arregloStrings[], int n, char* sep, char* res){
+    int indice = 0; // posicion de res
+
+    // iteramos sobre los elementos de arregloStrings
+    for (int i = 0; i < n; i++){
+        int j = 0; // variable para recorrer cada caracter 
+
+        // arregloStrings[0][j] , arregloStrings[1][j], ... arregloStrings[n][j]
+        while (arregloStrings[i][j] != '\0'){
+            *(res+indice) = *(arregloStrings[i]+j); // ponemos cada caracter i en res
+            j++; // pasamos al siguiente caracter
+            indice++; // aumentamos 1 la posicion de res
+        }
+        
+        // ponemos el separador mientras estemos dos posiciones atras del ultimo elemento del arreglo
+        if (i < n - 1){
+            *(res+indice) = *(sep);
+            indice++;
+        }
+    }
+    // colocamos el '\0' al final de res
+    *(res+indice) = '\0';
+}
+
+int main(){
+    char *arr[] = {"hola", "rosario", "messi"};
+    char buffer[50];
+    string_unir(arr, 3, "-", buffer);
+    printf("%s\n", buffer);
+    return 0;
+}
+// ejemplo de salida:
+// hola-rosario-messi
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
