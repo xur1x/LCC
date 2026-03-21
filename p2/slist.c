@@ -135,3 +135,65 @@ int slist_contiene(SList l, int elemento){
   return 0;
 }
 
+// f) slist indice que devuelve la posici ́on de la primera ocurrencia de un elemento si el mismo est ́a en
+// la lista dada, y -1 en caso que no est ́e.
+int slist_indice(SList l, int elemento){
+  int indice = 0;
+  while (l != NULL){
+    if (l->dato == elemento){
+      return indice;
+    }
+    indice++;
+    l = l->sig;
+  }
+  return -1;
+}
+
+// g) slist intersecar que devuelve una nueva lista con los elementos comunes (independientemente de
+// la posici ́on) de dos listas dadas por par ́ametro. Las listas originales no se modifican.
+SList slist_intersecar(SList l1, SList l2){
+  SList nuevaLista = NULL;
+  for (SList i = l1; i != NULL; i = i->sig){
+    int datoActual = i->dato;
+    if (slist_contiene(l2, datoActual) && !(slist_contiene(nuevaLista, datoActual)) ){
+      nuevaLista = slist_agregar_final(nuevaLista, datoActual);
+    }
+  }
+  return nuevaLista;
+}
+
+// h) slist intersecar custom que trabaja como la anterior pero recibe un par ́ametro extra que es un
+// puntero a una funci ́on de comparaci ́on que permite definir la noci ́on de igualdad a ser usada al
+// comparar elementos por igualdad.
+int espar(int a, int b){
+  if (a % 2 == 0 && b % 2 == 0){
+    return 1;
+  } else{
+    return 0;
+  }
+}
+
+int slist_contiene_custom(SList l, int elemento, FuncionComp comp){
+  int cont = 0;
+  while (l != NULL){
+    if (comp(l->dato, elemento)){
+      return 1;
+    }
+    l = l->sig;
+  }
+  return 0;
+}
+
+SList slist_intersecar_custom(SList l1, SList l2, FuncionComp comp){
+  SList nuevaLista = NULL;
+  for (SList i = l1; i != NULL; i = i->sig){
+    int datoActual = i->dato;
+    if (slist_contiene_custom(l2, datoActual, comp) &&
+     !(slist_contiene_custom(nuevaLista, datoActual, comp))){
+      nuevaLista = slist_agregar_final(nuevaLista, datoActual);
+    }
+  }
+  return nuevaLista;
+}
+
+
