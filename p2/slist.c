@@ -197,3 +197,40 @@ SList slist_intersecar_custom(SList l1, SList l2, FuncionComp comp){
 }
 
 
+// i) slist ordenar que ordena una lista de acuerdo al criterio dado por una funci´on de comparaci´on
+// (que usa los mismos valores de retorno que strcmp()) pasada por par´ametro.
+
+
+// k) slist intercalar que dadas dos listas, intercale sus elementos en la lista resultante. Por ejemplo,
+// dadas las listas [1, 2, 3, 4] y [5, 6], debe obtener la lista [1, 5, 2, 6, 3, 4].
+
+SList slist_intercalar(SList l1, SList l2){
+  if (l1 == NULL ) return l2;
+  if (l2 == NULL ) return l1;
+
+  SList nuevaLista = NULL;
+  SList i = l1, j = l2;
+  int pos = 1;
+  while (i != NULL || j != NULL){
+    if (j == NULL){
+      nuevaLista = slist_concatenar(nuevaLista, i);
+      break;
+    } else if (i == NULL){
+      nuevaLista = slist_concatenar(nuevaLista, j);
+      break;
+    }
+
+    if (!(pos % 2 == 0)){
+      nuevaLista = slist_agregar_final(nuevaLista, i->dato);
+      i = i->sig;
+    } else{
+      nuevaLista = slist_agregar_final(nuevaLista, j->dato);
+      j = j->sig;
+    }
+    pos++;
+  }
+  return nuevaLista;
+}
+
+// i = [1, 2, 3, 4], j = [5, 6]
+// ij != NULL

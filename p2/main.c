@@ -13,20 +13,18 @@ int main(int argc, char *argv[]) {
   lista = slist_agregar_final(lista, 1);
   lista = slist_agregar_final(lista, 2);
   lista = slist_agregar_final(lista, 3);
-  lista = slist_agregar_final(lista, 3);
+  lista = slist_agregar_final(lista, 4);
   slist_recorrer(lista, imprimir_entero);
   puts("");
 
   //----------------------item h------------------------------------------
   SList listab = slist_crear();
-  listab = slist_agregar_final(listab, 4);
-  listab = slist_agregar_final(listab, 2);
+  listab = slist_agregar_final(listab, 5);
   listab = slist_agregar_final(listab, 6);
-  listab = slist_agregar_final(listab, 3);
   slist_recorrer(listab, imprimir_entero);
   puts("");
 
-  SList nuevalista = slist_intersecar_custom(lista, listab, espar);
+  SList nuevalista = slist_intercalar(lista, listab);
   slist_recorrer(nuevalista, imprimir_entero);
   puts("");
   //----------------------------------------------------------------------

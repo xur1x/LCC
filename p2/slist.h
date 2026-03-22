@@ -93,4 +93,9 @@ int slist_contiene_custom(SList l, int elemento, FuncionComp comp);
  */
 SList slist_intersecar_custom(SList l1, SList l2, FuncionComp comp);
 
+/**
+ *  intercala los elementos de dos listas
+ */
+SList slist_intercalar(SList l1, SList l2);
+
 #endif /* __SLIST_H__ */
