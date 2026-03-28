@@ -200,6 +200,17 @@ SList slist_intersecar_custom(SList l1, SList l2, FuncionComp comp){
 // i) slist ordenar que ordena una lista de acuerdo al criterio dado por una funci´on de comparaci´on
 // (que usa los mismos valores de retorno que strcmp()) pasada por par´ametro.
 
+// j) slist reverso que obtenga el reverso de una lista.
+SList slist_reverse(SList l){
+  SList lista_invertida = NULL;
+  SList temp = l;
+  while (temp != NULL){
+    lista_invertida = slist_agregar_inicio(lista_invertida, temp->dato);
+    temp = temp->sig;
+  }
+  return lista_invertida;
+}
+
 
 // k) slist intercalar que dadas dos listas, intercale sus elementos en la lista resultante. Por ejemplo,
 // dadas las listas [1, 2, 3, 4] y [5, 6], debe obtener la lista [1, 5, 2, 6, 3, 4].

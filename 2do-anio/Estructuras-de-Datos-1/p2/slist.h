@@ -98,4 +98,9 @@ SList slist_intersecar_custom(SList l1, SList l2, FuncionComp comp);
  */
 SList slist_intercalar(SList l1, SList l2);
 
+/**
+ *  invierte una lista
+ */
+SList slist_reverse(SList l);
+
 #endif /* __SLIST_H__ */

@@ -17,18 +17,20 @@ int main(int argc, char *argv[]) {
   slist_recorrer(lista, imprimir_entero);
   puts("");
 
-  //----------------------item h------------------------------------------
-  SList listab = slist_crear();
-  listab = slist_agregar_final(listab, 5);
-  listab = slist_agregar_final(listab, 6);
-  slist_recorrer(listab, imprimir_entero);
-  puts("");
+  // SList listab = slist_crear();
+  // listab = slist_agregar_final(listab, 5);
+  // listab = slist_agregar_final(listab, 6);
+  // slist_recorrer(listab, imprimir_entero);
+  // puts("");
 
-  SList nuevalista = slist_intercalar(lista, listab);
+  //----------------------item h------------------------------------------
+
+  SList nuevalista = slist_reverse(lista);
   slist_recorrer(nuevalista, imprimir_entero);
   puts("");
   //----------------------------------------------------------------------
 
+  slist_destruir(nuevalista);
   slist_destruir(lista);
 
   return 0;
