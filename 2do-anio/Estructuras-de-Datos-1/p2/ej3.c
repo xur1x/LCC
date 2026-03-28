@@ -17,6 +17,7 @@ typedef struct SList{
 
 void slist_agregar_inicio(SList* l, int dato){
     SNodo* nuevoNodo = malloc(sizeof(SNodo));
+    if (nuevoNodo == NULL) return;
     nuevoNodo->dato = dato;
     nuevoNodo->sig = NULL;
 
