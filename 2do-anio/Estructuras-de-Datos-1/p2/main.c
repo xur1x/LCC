@@ -14,6 +14,8 @@ int main(int argc, char *argv[]) {
   lista = slist_agregar_final(lista, 2);
   lista = slist_agregar_final(lista, 3);
   lista = slist_agregar_final(lista, 4);
+  lista = slist_agregar_final(lista, 5);
+
   slist_recorrer(lista, imprimir_entero);
   puts("");
 
@@ -25,12 +27,11 @@ int main(int argc, char *argv[]) {
 
   //----------------------item h------------------------------------------
 
-  SList nuevalista = slist_reverse(lista);
+  SList nuevalista = slist_partir(lista);
   slist_recorrer(nuevalista, imprimir_entero);
   puts("");
   //----------------------------------------------------------------------
 
-  slist_destruir(nuevalista);
   slist_destruir(lista);
 
   return 0;

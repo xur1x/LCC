@@ -200,6 +200,7 @@ SList slist_intersecar_custom(SList l1, SList l2, FuncionComp comp){
 // i) slist ordenar que ordena una lista de acuerdo al criterio dado por una funci´on de comparaci´on
 // (que usa los mismos valores de retorno que strcmp()) pasada por par´ametro.
 
+
 // j) slist reverso que obtenga el reverso de una lista.
 SList slist_reverse(SList l){
   SList lista_invertida = NULL;
@@ -243,5 +244,28 @@ SList slist_intercalar(SList l1, SList l2){
   return nuevaLista;
 }
 
-// i = [1, 2, 3, 4], j = [5, 6]
-// ij != NULL
+
+// l) slist partir que divide una lista a la mitad. En caso de longitud impar (2n + 1), la primer lista
+// tendr´a longitud n + 1 y la segunda n. Retorna un puntero al primer elemento de la segunda mitad,
+// siempre que sea no vac´ıa
+
+SList slist_partir(SList l){
+  if (l == NULL || l->sig == NULL) return NULL;
+  SList listaNueva = NULL;
+  SList temp = l;
+  int tam = slist_longitud(l), corte;
+
+  if (tam % 2 == 0){
+    corte = tam/2;
+  } else {
+      corte = (tam / 2) + 1;
+  }
+
+  for (int i = 0; i < corte - 1; i++){
+    temp = temp->sig;
+  }
+
+  listaNueva = temp->sig;
+  temp->sig = NULL;
+  return listaNueva;
+}

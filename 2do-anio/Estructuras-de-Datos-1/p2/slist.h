@@ -103,4 +103,10 @@ SList slist_intercalar(SList l1, SList l2);
  */
 SList slist_reverse(SList l);
 
+/**
+ *  parte una lista a la mitar y retorna la lista de la seguda mitad
+ *  
+ */
+SList slist_partir(SList l);
+
 #endif /* __SLIST_H__ */
