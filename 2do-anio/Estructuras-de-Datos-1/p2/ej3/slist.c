@@ -1,20 +1,7 @@
+#include "slist.h"
 #include <stdio.h>
-#include <stdlib.h>
-
-typedef struct _SNodo{
-    int dato;
-    struct _SNodo* sig;
-} SNodo;
-
-typedef struct SList{
-    SNodo* head;
-    SNodo* last;
-} SList;
-
-
 
 // Reimplemente para este caso las funciones slist crear, slist agregar inicio y slist agregar final.
-
 void slist_agregar_inicio(SList* l, int dato){
     SNodo* nuevoNodo = malloc(sizeof(SNodo));
     if (nuevoNodo == NULL) return;
@@ -56,9 +43,6 @@ void slist_destruir(SList* l){
     l->last = NULL;
 }
 
-
-typedef void (*FuncionVisitante)(int);
-
 SList* crear_lista(){
     SList* nuevaLista = malloc(sizeof(SList));
     if (nuevaLista != NULL){
@@ -78,20 +62,4 @@ void slist_recorrer(SList* l, FuncionVisitante f){
     }
 }
 
-int main(){
-    SList* lista = crear_lista();
-    slist_agregar_final(lista, 1);
-    slist_agregar_final(lista, 2);
-    slist_agregar_final(lista, 3);
-    slist_recorrer(lista, imprimir_entero);
-    puts("");
 
-
-    slist_destruir(lista);
-    free(lista);
-    return 0;
-}
-
-// ¿Detecta alguna ventaja o desventaja con la nueva definici´on?
-// la ventaja es que no necesitamos recorrer toda la lista para agregar un nodo al final 
-// lo que antes costaba O(n) ahora cuesta O(1).
