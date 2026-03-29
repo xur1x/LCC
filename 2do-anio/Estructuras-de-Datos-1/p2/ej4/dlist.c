@@ -69,3 +69,17 @@ void dlist_agregar_final(DList* l, int dato){
 }
 
 
+void dlist_recorrer(DList* l, FuncionVisitante f,DListOrdenDeRecorrido orden){
+    if (l->primero == NULL) return;
+
+    if (orden == DLIST_RECORRIDO_HACIA_ADELANTE){
+        for (DNodo* temp = l->primero; temp != NULL; temp = temp->sig){
+            f(temp->dato);
+        }
+        
+    } else {
+        for (DNodo* temp = l->ultimo; temp != NULL; temp = temp->ant){
+            f(temp->dato);
+        }
+    }
+}

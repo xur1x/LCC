@@ -14,6 +14,11 @@ DNodo* primero;
 DNodo* ultimo;
 } DList;
 
+typedef enum {
+    DLIST_RECORRIDO_HACIA_ADELANTE,
+    DLIST_RECORRIDO_HACIA_ATRAS
+} DListOrdenDeRecorrido;
+
 typedef void (*FuncionVisitante) (int);
 
 /**
@@ -46,5 +51,9 @@ void dlist_agregar_inicio(DList* l, int dato);
  */
 void dlist_agregar_final(DList* l, int dato);
 
+/**
+ * recorre una lista en un orden dado y aplica una funcion a los elementos
+ */
+void dlist_recorrer(DList* l, FuncionVisitante f,DListOrdenDeRecorrido orden);
 
 #endif
