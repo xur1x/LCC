@@ -1,1 +1,4 @@
-*.rkt linguist-documentation=true
+p1.rkt linguist-detectable=false
+p3.rkt linguist-detectable=false
+p4.rkt linguist-detectable=false
+p4-structs-bigbang.rkt linguist-detectable=false
