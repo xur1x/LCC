@@ -99,28 +99,20 @@ SList slist_insertar(SList l, int datto, int pos){
 }
 
 // d) slist eliminar que borra de una lista un dato apuntado en una posici ́on arbitraria.
-SList slist_eliminar(SList l, int pos){
-  if (pos < 0 || pos > slist_longitud(l)) {
-    printf("indice fuera de rango mostro\n");
-    return l;
-  }
+SNodo* slist_eliminar(SNodo* l, int pos){
+    int len = slist_longitud(l);
+    if (l == NULL) return l;
+    if (pos < 0 || pos > len){
+        printf("indice fuera de rango\n");
+        return l;
+    }
 
-  SList nodoBorrar;
-
-  if (pos == 0){
-    nodoBorrar = l;
-    l = l->sig;
-    free(nodoBorrar);
-    return l;
-  } else {
-    SList temp = l;
-    for(int i = 0; i < pos - 1; temp = temp->sig, i++);
-    nodoBorrar = temp->sig;
+    SNodo* temp = l;
+    for (int i = 0 ; i < pos - 1 ; temp = temp->sig, i++);
+    SNodo* nodoBorrar = temp->sig;
     temp->sig = nodoBorrar->sig;
     free(nodoBorrar);
-  }
-  
-  return l;
+    return l;
 }
 
 // e) slist contiene que determina si un elemento est ́a en una lista dada.
