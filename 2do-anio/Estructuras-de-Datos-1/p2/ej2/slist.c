@@ -76,8 +76,8 @@ SList slist_concatenar(SList l1, SList l2){
 
 // c) slist insertar que inserta un dato en una lista en una posici ́on arbitraria.
 SList slist_insertar(SList l, int datto, int pos){
-
-  if (pos < 0 || pos > slist_longitud(l)){
+  int len = slist_longitud(l);
+  if (pos < 0 || pos > len){
     printf("indice fuera de rango mostro \n");
     return l;
   }
