@@ -8,11 +8,6 @@ int es_mayor_60(void* dato){
   return ( c->edad > 60 );
 }
 
-// int comp_edad(void* dato){
-//   Contacto* c = (Contacto*) dato;
-
-//   if ()
-// }
 
 int main() {
 

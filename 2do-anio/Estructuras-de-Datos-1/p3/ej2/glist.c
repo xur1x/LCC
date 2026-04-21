@@ -140,34 +140,29 @@ void pila_destruir(Pila p, FuncionDestructora d){
   glist_destruir(p, d);
 }
 
-Pila pila_es_vacia(Pila p){
+int pila_es_vacia(Pila p){
   return sglist_es_vacia(p);
 }
 
-Pila pila_tope(Pila p){
+void* pila_tope(Pila p){
   return p->data;
 }
 
-void pila_apilar(Pila p, void* dato, FuncionComparadora comp, FuncionCopia copia){
-  GNode* nuevoNodo = malloc(sizeof(GNode));
-  nuevoNodo->data = copia(dato);
-  nuevoNodo->next = NULL;
-
-  if (pila_es_vacia(p)){
-    return nuevoNodo;
-  } else{
-    nuevoNodo->next = p;
-    return nuevoNodo;
-  }
+Pila pila_apilar(Pila p, void* dato, FuncionCopia copia){
+  return glist_agregar_inicio(p, dato, copia);
 }
 
-void pila_desapilar(Pila p){
-  if (! pila_es_vacia(p) ){
-    p = p->next;
-  }
+Pila pila_desapilar(Pila p, FuncionDestructora d){
+  if (p == NULL) return NULL;
+  Pila aux = p->next;
+  d(p->data);
+  free(p);
+  return aux;
 }
 
-void pila_imprimir(Pila p){
-  
+void pila_imprimir(Pila p, FuncionVisitante f){
+  for (GNode* temp = p; temp != NULL ; temp = temp->next){
+    f(temp->data);
+  }
 }
 
