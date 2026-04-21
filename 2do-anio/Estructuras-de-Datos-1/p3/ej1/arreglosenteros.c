@@ -79,3 +79,54 @@ void arreglo_entero_eliminar(ArregloEnteros* arreglo, int pos){
 // ----------- fin pract 1 -----------
 
 
+// ----------- pract 3 ej1 -----------
+
+Pila pila_crear(int capacidad){
+    Pila nuevaPila = malloc(sizeof(struct _Pila));
+    nuevaPila->arr = arreglo_entero_crear(capacidad);
+    nuevaPila->ultimo = -1;
+    return nuevaPila;
+}
+
+void pila_destruir(Pila p){
+    if (p != NULL){
+        arreglo_entero_destruir(p->arr);
+        free(p);
+    }
+}
+
+int pila_es_vacia(Pila p){
+    return (p == NULL || p->ultimo == -1);
+}
+
+int pila_tope(Pila p){
+    if (p != NULL && !pila_es_vacia(p)){
+        return *(p->arr->direccion+p->ultimo);
+    } else {
+        return -1;
+    }
+}
+
+void pila_apilar(Pila p, int dato){
+    if (p->ultimo == p->arr->capacidad - 1){
+        arreglo_entero_ajustar(p->arr, p->arr->capacidad * 2);
+    }
+
+    p->ultimo++;
+    *(p->arr->direccion+p->ultimo) = dato;
+}
+
+
+void pila_desapilar(Pila p){
+    if (p != NULL && !pila_es_vacia(p)){
+        p->ultimo--;
+    }
+}
+
+void pila_imprimir(Pila p){
+   if (p != NULL){
+        for (int i = 0; i <= p->ultimo; i++){
+            printf("%d ", *(p->arr->direccion+i));
+        }
+    }
+}

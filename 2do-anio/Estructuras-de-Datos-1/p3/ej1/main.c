@@ -3,25 +3,29 @@
 #include "arreglosenteros.h"
 
 int main(){
-    ArregloEnteros* arreglo = arreglo_entero_crear(5);
-    for (int i = 0; i < 5; i++){
-        arreglo_entero_escribir(arreglo, i, i);
-    }
-    arreglo_enteros_imprimir(arreglo);
-    puts("");
-    
-    arreglo_entero_ajustar(arreglo, 4);
-    arreglo_enteros_imprimir(arreglo);
+    Pila pila = pila_crear(5);
+    pila_apilar(pila, 1);
+    pila_apilar(pila, 2);
+    pila_apilar(pila, 3);
+    pila_apilar(pila, 4);
+    pila_apilar(pila, 5);
+    pila_imprimir(pila);
     puts("");
 
-    arreglo_entero_insertar(arreglo, 2, 7);
-    arreglo_enteros_imprimir(arreglo);
+    printf("El tope es: %d ", pila_tope(pila));
     puts("");
 
-    arreglo_entero_eliminar(arreglo, 2);
-    arreglo_enteros_imprimir(arreglo);
+    pila_desapilar(pila);
+    pila_imprimir(pila);
+    puts("");
+    printf("El tope es: %d ", pila_tope(pila));
     puts("");
 
-    arreglo_entero_destruir(arreglo);
+    pila_destruir(pila);
     return 0;
 }
+
+// 1 2 3 4 5 
+// El tope es: 5 
+// 1 2 3 4 
+// El tope es: 4 
