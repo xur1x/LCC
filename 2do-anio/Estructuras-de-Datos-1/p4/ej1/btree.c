@@ -45,9 +45,36 @@ BTree btree_unir(int dato, BTree left, BTree right) {
 /**
  * Recorrido del arbol, utilizando la funcion pasada.
  */
-void btree_recorrer(BTree arbol, BTreeOrdenDeRecorrido orden,
-                    FuncionVisitante visit) {
-  /** COMPLETAR */
+void btree_recorrer(BTree arbol, BTreeOrdenDeRecorrido orden, FuncionVisitante visit) {
+
+  if (btree_empty(arbol)){
+    return ;
+  }
+
+  if (orden == BTREE_RECORRIDO_PRE) {
+    visit(arbol->dato);
+    BTree* left = arbol->left;
+    btree_recorrer(left, orden, visit);
+    BTree* right = arbol->right;
+    btree_recorrer(right, orden, visit);
+  }
+
+  if (orden == BTREE_RECORRIDO_IN) {
+    BTree* left = arbol->left;
+    btree_recorrer(left, orden, visit);
+    visit(arbol->dato);
+    BTree* right = arbol->right;
+    btree_recorrer(right, orden, visit);
+  }
+
+  if (orden == BTREE_RECORRIDO_POST){
+    BTree* left = arbol->left;
+    btree_recorrer(left, orden, visit);
+    BTree* right = arbol->right;
+    btree_recorrer(right, orden, visit);
+    visit(arbol->dato);
+  }
+
   assert(0);
   return;
 }
